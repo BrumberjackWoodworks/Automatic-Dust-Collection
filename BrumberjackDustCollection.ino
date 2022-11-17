@@ -40,6 +40,7 @@ int Button9State = 0;
 const int Button10 = 10;
 int Button10State = 0;
 
+
 int G0State = 0; //JB:Creating state tracking variables for each gate, each gate will be opened in the setup code so that when it is powered on the state variables will all be 0 and the gates will all be opened 
 int G1State = 0;
 int G2State = 0;
@@ -257,15 +258,24 @@ pwm.begin();
 pwm.setOscillatorFrequency(27000000);
 pwm.setPWMFreq(SERVO_FREQ);  // Analog servos run at ~50 Hz updates
 
-pinMode (2, INPUT_PULLUP);//JB: Telling it that these pin numbers are inputs and using the built in PULLUP Resistor for a cleaner signal
-pinMode (3, INPUT_PULLUP);
-pinMode (4, INPUT_PULLUP);
-pinMode (5, INPUT_PULLUP);
-pinMode (6, INPUT_PULLUP);
-pinMode (7, INPUT_PULLUP);
-pinMode (8, INPUT_PULLUP);
-pinMode (9, INPUT_PULLUP);
-pinMode (10, INPUT_PULLUP);
+pinMode (2, INPUT);//JB: Telling it that these pin numbers are inputs and using the built in PULLUP Resistor for a cleaner signal
+digitalWrite(2,HIGH);
+pinMode (3, INPUT);
+digitalWrite(3,HIGH);
+pinMode (4, INPUT);
+digitalWrite(4,HIGH);
+pinMode (5, INPUT);
+digitalWrite(5,HIGH);
+pinMode (6, INPUT);
+digitalWrite(6,HIGH);
+pinMode (7, INPUT);
+digitalWrite(7,HIGH);
+pinMode (8, INPUT);
+digitalWrite(8,HIGH);
+pinMode (9, INPUT);
+digitalWrite(9,HIGH);
+pinMode (10, INPUT);
+digitalWrite(10,HIGH);
 
 pwm.setPWM(0,0,360); //JB: Opening all of the gates when the system is powered on to make sure all gates and state tracking variables are correct.
 pwm.setPWM(1,0,355);
@@ -302,6 +312,7 @@ Button2State=digitalRead(Button2); //JB: Reads the state of button 2
     OpenG1(); //JB: Calls the function to check if the gate is closed and opens it if it's closed
     CloseG0();
     delay(500);
+    digitalWrite(2,HIGH);
     return; //JB: returns to the original loop that is reading the buttons
   }
 
@@ -317,6 +328,7 @@ Button3State=digitalRead(Button3);
     OpenG0();
     CloseG1();
     delay(500);
+    digitalWrite(3,HIGH);
     return;
     
   }
@@ -339,6 +351,7 @@ Button4State=digitalRead(Button4);
     OpenG0();
     CloseG1();
     delay(500);
+    digitalWrite(4,HIGH);
     return;
   }
 
@@ -360,6 +373,7 @@ Button5State=digitalRead(Button5);
     OpenG0();
     CloseG1();
     delay(500);
+    digitalWrite(5,HIGH);
     return;
   }
 
@@ -381,6 +395,7 @@ Button6State=digitalRead(Button6);
     OpenG0();
     CloseG1();
     delay(500);
+    digitalWrite(6,HIGH);
     return;
   }
 
@@ -402,6 +417,7 @@ Button7State=digitalRead(Button7);
     OpenG0();
     CloseG1();
     delay(500);
+    digitalWrite(7,HIGH);
     return;
   }
 
@@ -417,6 +433,7 @@ Button8State=digitalRead(Button8);
     OpenG0();
     CloseG1();
     delay(500);
+    digitalWrite(8,HIGH);
     return;
   }
 
@@ -435,6 +452,7 @@ Button9State=digitalRead(Button9);
     OpenG0();
     CloseG1();
     delay(500);
+    digitalWrite(9,HIGH);
     return;
   }
 
@@ -452,6 +470,7 @@ Button10State=digitalRead(Button10);
     OpenG0();
     CloseG1();
     delay(500);
+    digitalWrite(10,HIGH);
     return;
   }
 
